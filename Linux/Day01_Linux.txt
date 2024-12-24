@@ -1,0 +1,241 @@
+Operating System
+--------------------------
+OS is a software which is used to interact with the machine.
+Acts as a mediator between a user and machine.
+OS is mandatory to use any device.
+It provides an environment to run an app.
+
+Types of OS;
+Windows, Linux, Mac
+
+Linux Distributions;
+RedHat, Fedora, CentOS, Ubuntu, Debian, 
+
+Linux Vs Windows
+----------------------------
+Linux: Open-source, community-driven, free (most distributions).
+Windows: Closed-source, proprietary, requires a paid license.
+
+Source Code and Customization
+Linux: Open-source, highly customizable (kernels, UI).
+Windows: Closed-source, limited customization without third-party tools.
+
+User Interface
+Linux: Multiple desktop environments (GNOME, KDE). Powerful shells (Bash, Zsh).
+Windows: Standardized graphical UI, Command Prompt and PowerShell available.
+
+Software and Compatibility
+Linux: Extensive open-source applications, limited gaming support (improving via Steam/Proton).
+Windows: Wide range of commercial software, excellent gaming support.
+
+Performance and Resource Usage
+Linux: Efficient on older hardware, faster boot times with lightweight distros.
+Windows: Resource-intensive, moderate to slow boot times.
+
+Security
+Linux: Fewer vulnerabilities, strict user permissions, generally no antivirus needed.
+Windows: Frequent malware target, more lenient permissions, antivirus is essential.
+
+Updates
+Linux: Frequent, user-controlled updates; rarely requires a reboot.
+Windows: Scheduled, sometimes forced updates; often requires a reboot.
+
+Use Cases
+Linux: Servers, programming, DevOps, IoT devices.
+Windows: Personal computing, gaming, business environments.
+
+Linux Commands
+--------------------------
+1. To clear the screen
+clear (or) control + l
+
+2. To know the date and time
+date
+
+3. To see the calendar
+cal
+
+4. To see the previous month, current month, and the next month
+cal -3
+
+5. To see the whole year calendar
+cal <Year>
+
+6. To see the disc utilization
+top
+
+7. To come out/exit of the previous command screen
+control + c
+
+8. Types of users available in Linux OS
+We have 2 types of users by default;
+1. ec2-user (default user)
+2. root
+
+Difference b/w ec2-user and root user;
+If you are the ec2-user, you will not be allowed to install the softwares/packages/tools. Permissions are limited
+If you are the root user, you will have all kinds of privileges/permissions
+
+9. To know the current type of user
+whoami
+
+10. To switch to root user
+sudo su
+
+11. To switch to the ec2-user
+exit (or) control+d
+
+In Linux OS we have two important things;
+1. Directories (Folders)
+2. Files - .txt, .py, .java, .php, .net.....
+
+12. How to create a directory?
+mkdir <DirectoryName>
+
+13. To see/verify the list of directories/files available
+ls (or) ls -l (or) ll
+
+14. To see the current working path/directory
+pwd (Present Working Directory)
+
+15. To go inside a specific directory
+cd <DirectoryName>
+
+16. To go to the previous path
+cd .. (to go one step backward)
+cd ../.. (to go two steps backward)
+cd ../../.. (to go three steps backward)
+
+17. To delete an empty directory
+rmdir <DirectoryName>
+
+18. To delete a directory which contains sub-directories/files
+rm -rf <DirectoryName>
+Recursive
+Force
+
+19. To see the list of default directories
+cd /
+ls (or) ls -l (or) ll
+
+20. To go inside a default directory
+cd <DirectoryName>
+
+21. To create files in Linux OS we have 3 ways/methods;
+1. touch
+2. cat
+3. vi (or) vim
+
+22. Create a file using 'touch'
+touch <FileName>
+
+23. To create multiple files at the same time
+touch <File1Name> <File2Name> <File3Name> <File4Name>
+
+24. To create multiples files with same name but with little change
+linux1.txt
+linux2.txt
+linux3.txt
+....
+linux10.txt
+
+touch <FileFirstName>{1..10}.java
+touch <FileFirstName>{11..15}.py
+touch <FileFirstName>{8..10}.txt
+
+25. To delete a single file
+rm <FileName>
+
+26. To delete multiple files
+rm <FileName> <FileName> <FileName> <FileName>
+
+27. To delete multiples which consists of same name or extension
+rm <FileName>*
+
+
+======================================================================================================
+								LinkedIn: https://www.linkedin.com/in/kastro-kiran/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
