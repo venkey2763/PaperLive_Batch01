@@ -54,4 +54,4 @@ Unlock the world of DevOps with a comprehensive and hands-on learning experience
 ### 📚 **Get Started**
 Clone this repository and follow along with the course:  
 ```bash
-git clone https://github.com/your-repo/devops-course.git
+git clone (https://github.com/KastroVKiran/PaperLive_Batch01.git)
