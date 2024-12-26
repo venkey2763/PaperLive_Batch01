@@ -1,0 +1,176 @@
+Linux_Day 02
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+27. Creating the files using CAT command
+cat > <FileName>
+
+First cat command will create a file and then it will allow us to write the content inside the file
+Write some content
+To exit from the file; control + c
+
+28. To see the content inside the file
+cat <FileName>
+
+Note: cat command will override the existing content inside a file
+
+29. Can i preserve the old content and also can i write the new content inside an existing file
+cat >> <FileName>
+
+30. Creating a file and writing the content inside the file using vi or vim command
+vi <FileName>
+Steps:
+1. vi <FileName>
+2. Press 'i' to write the content inside the file
+3. Write the required content
+4. Press 'esc'
+5. To save and quite from the file ---> :wq
+6. To verify the content ---> cat <FileName>
+
+31. Additional commands for 'vi'
+:wq (or) :wq! ---> to save and quit from the file
+:w ---> to save
+:q! ---> to quit from the file without saving
+
+32. To go the end of a line
+shift + a (When executing this command, make sure you are not there in the insert mode)
+
+33. To go to the beginning of file
+shift + i (When executing this command, make sure you are not there in the insert mode)
+
+34. To write the content above the existing line
+shift + o (When executing this command, make sure you are not there in the insert mode)
+
+35. To write the content below a specific line
+<TASK FOR YOU>
+
+36. To go directly to the starting point of the last line from anywhere
+shift + g (When executing this command, make sure you are not there in the insert mode)
+
+37. To see the number of lines available in a file
+:set number (When executing this command, make sure you are not there in the insert mode)
+
+38. To go to a specific line 
+:<LineNumber> (When executing this command, make sure you are not there in the insert mode)
+
+39. To copy a specific line
+Go to the required line and then press yy (When executing this command, make sure you are not there in the insert mode)
+
+40. To paste the copied line
+p (When executing this command, make sure you are not there in the insert mode)
+
+41. To delete a line
+dd (When executing this command, make sure you are not there in the insert mode)
+
+42. How to undo?
+u (When executing this command, make sure you are not there in the insert mode)
+
+43. How to redo?
+control + r (When executing this command, make sure you are not there in the insert mode)
+
+44. How to delete a specific number of lines at a time?
+<NumberofLineYouWantToDelete>dd (When executing this command, make sure you are not there in the insert mode)
+ 
+45. How to copy and paste a specific number of lines?
+<NumberofLineYouWantToPastee>pp (When executing this command, make sure you are not there in the insert mode)
+
+46. To search for a specific word
+/<WordName> (When executing this command, make sure you are not there in the insert mode). It is case sensitive.
+
+47. To remove the line numbers from a file
+cut -d' ' -f2- <FileName> > <NewFile> (When executing this command, make sure you are not there in the insert mode)
+
+48. To delete everything available inside a file
+:%d (When executing this command, make sure you are not there in the insert mode)
+
+49. To copy the content from one file to another file
+cat <File1Name> > <File2Name>
+Note: Here in File1 whatever content is available it will get copied to file2, but if there is any existing content inside the file2 it will get override.
+
+50. If you dont want to override
+cat <File1Name> >> <File2Name>
+
+51. To rename a file or directory
+mv <NameOfOriginalFile> <NameOfNewFile>
+
+52. To see the first 10 lines inside a file
+head <FileName>
+
+53. To see the last 10 lines inside a file
+tail <FileName>
+
+54. To see the content from the specific number of lines from top
+head -n <LineNumber> <FileName>
+
+55. To see the content from the specific number of lines from bottom
+tail -n <LineNumber> <FileName>
+
+56. To see the content available in a specific line from top
+head +4 <FileName>
+
+57. To see the content available in a specific line from bottom
+tail +4 <FileName>
+
+58. To know the number of words in a file
+wc <FileName>
+
+24 142 758 kastrokiran.txt
+24 ---> Number of lines in the file
+142 ---> Number of words in the file
+758 ---> Number of characters in the file
+kastrokiran.txt ---> File name
+
+59. GREP command
+GREP - Global Regular Expression Print
+Grep command is used to search for word
+
+grep '<WordName>' <FileName>
+Note: This is case sensitive
+
+60. To ignore the case sensitivity
+grep -i '<WordName>' <FileName>
+
+61. To search for a word in all the files available
+grep -i <'WordName'> *
+
+62. SED
+Stream Editor
+This command is used to replace a word with another word
+Using SED command we can replace the text without opening the file
+
+sed 's/<WordNameYouWantToReplace>/<NewWord>/' <FileName>
+
+63. To delete the last line in a file
+sed '$d' <FileName>
+
+64. To delete the lines from specific line number
+sed '<LineNumberFromWhichYouWantToDeleteTheContent>,$d' <FileName>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
