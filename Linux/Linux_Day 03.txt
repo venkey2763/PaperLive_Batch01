@@ -1,0 +1,167 @@
+												Linux_Day 03
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+65. File Permissions
+Whenever we execute ls -l or ll command we will see the meta data of a file or a directory. As a part of metadata, we will see something like below;
+rw-r--r--
+In general, a file permission in Linux is divided into 3 categories;
+1. User permissions (u)
+2. Group permissions (g)
+3. Others permissions (o)
+
+WhatsApp Group ----> Admin
+10 persons added ----> Group Settings (Messages, Group Profile Pic, Group Description)
+
+File ----> Decide the permissions
+In Linux, we have 3 types of permissions;
+1. read permission (r)
+2. write permission (w)
+3. execute permission (x)
+
+Ex: -rw-r--r--. 1 ec2-user ec2-user  66 Dec 26 15:05 dipesh.java
+
+dipesh.java ----> rw-r--r--
+
+First 3 characters represent the "User permissions"
+Second 3 characters represent the "Group permissions"
+Third 3 characters represent the "Others permissions"
+
+dipesh.java ----> Users (r w -)
+dipesh.java ----> Group (r - -)
+dipesh.java ----> Others (r - -)
+
+66. Customizing the file permissions
+chmod
+
+67. How to add a read permission for user
+kastro.txt ----> rw-r--r--
+chmod u+r <FileName>
+
+68. How to add write permission for user
+chmod u+w <FileName>
+
+69. How to add execute permission for user
+chmod u+x <FileName>
+
+70. How to add a read permission for group
+kastro.txt ----> rw-r--r--
+chmod g+r <FileName>
+
+71. How to add write permission for group
+chmod g+w <FileName>
+
+72. How to add execute permission for 
+chmod g+x <FileName>
+
+<OTHERS PERMISSIONS IS A TASK>
+
+73. To remove the file permissions use - symbol
+Ex: chmod g-r <FileName>  ----> In this command for the file, for group category read permission will be removed
+
+74. Using Numbers we can change the file permissions
+0 - No permissions
+1 - only execute permission
+2 - only write permission
+3 - write and execute permission
+4 - only read permission
+5 - read and execute permission
+6 - read and write permission
+7 - read, write, execute permission
+
+chmod 12 <FileName>
+
+Note: When you give 1 or 2 numbers, the permissions will be changed from RIGHT side to LEFT side
+Note: When you give 3 numbers, the permissions will be changed from LEFT side to RIGHT side
+
+75. Users in Linux
+Default users in Linux;
+1. ec2-user
+2. root
+
+76. How to create the custom users?
+Note: You must be a root user to create the users ----> sudo su (or) sudo -i
+Note: Without switching to the root user, we can sudo at the beginning of command to become a root user temporarily
+
+sudo useradd <UserName>
+
+77. To verify the user creation
+id <UserName>
+
+Ex: uid=1001(kastro) gid=1001(kastro) groups=1001(kastro)
+
+78. Switching to the custom user
+sudo su <UserName>
+
+79. To remove a custom user
+sudo userdel <UserName>
+
+80. To see the list of users created
+First go inside /home path and then execute the ls -l or ll command
+
+
+
+
+
+sudo passwd <UserName>
+
+
+90. chown ---> Change ownership
+When we create a file or directory and execute ll or ls -l command we will see ec2-user ec2-user
+The first ec2-user represent the owner of a file
+The second ec2-user represent the file belongs to which group
+
+91. How to change the ownership of file
+sudo chown <UserName> <FileName>
+
+92. How to change the group permission of a file
+sudo chown <UserName>:<GroupName> <FileName>
+
+93. To search for the files which are empty
+sudo find /home -type f -empty
+
+94. To search for the directories which are empty
+sudo find /home -type d -empty
+
+95. 
+wget ----> used to download files/softwares based on url
+curl ----> used to send a request to an url
+ping ----> user to check the network connectivity
+
+96. Package managers
+yum - Yellowdog Updater, Modifier - Linux OS
+apt - Advanced Packaging Tool - Ubuntu OS
+dnf - Dandified yum
+dpkg - Debian Package Management System
+rpm - Redhad Package Manager - RedHat
+
+--------------------------------
+SHELL SCRIPTING
+--------------------------------
+
+How to check the shell type?
+echo $0
+
+To know the default shells available in linu
+cat /etc/shells
+
+All shell files should have an extension called .sh
+
+To execute a shell file
+./<FileName>
+
+.yaml (or) .yml files
+YAML - Yet Another Markup Language
+
+Variables
+------------------
+Variables are the places where we store the information
+bank = money
+a=10
+
+Syntax: VAR_NAME=VALUE
+
+
+
+
+
+
+
