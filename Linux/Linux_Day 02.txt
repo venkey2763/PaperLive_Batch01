@@ -41,6 +41,12 @@ shift + o (When executing this command, make sure you are not there in the inser
 
 35. To write the content below a specific line
 <TASK FOR YOU>
+sed -i 'LineNumber a\New_data' <FileName>
+-i: This option modifies the file in place.
+LINE_NUMBER: Replace this with the line number where you want to insert the new content.
+a: This tells sed to append the following line after the specified line.
+\n: A newline character, ensuring the new content starts on a new line.
+filename: The name of the file you want to edit.
 
 36. To go directly to the starting point of the last line from anywhere
 shift + g (When executing this command, make sure you are not there in the insert mode)
