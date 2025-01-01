@@ -1,0 +1,215 @@
+													Maven
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+What is Maven?
+Maven is a build tool that is used to create the initial project folder structure to develop the source code for the applications.
+
+Why Maven?
+Based on the programming language we have different build tools;
+	a. Java	----> Maven		------------- Commonly Preferred
+	b. Python	----> PyBuilder
+	c. .net	----> MS Build
+	d. Ruby	----> Rakes 
+
+In the real-time projects, developers will write the source code of the application, that source code should be compiled before execution, that compilation will be done by using MAVEN.
+Maven is used for the projects which are developed by using JPL. 
+Maven is also called as Java Build Tool.
+Maven is an open source s/w and it is available for free.
+
+Advantages of Maven
+--------------------------------
+1. Using maven we can create the initial project folder structure.
+
+2. Using maven we can download the 'dependencies' that are required to develop the project.
+
+What is a dependency?
+Chicken Biryani ----> Chicken ----> Rice ----> Masala ----> Vegetables ----> Flavours 
+Netflix ----> Java ----> Other softwares/tools (Dependencies)
+Java ----> Spring, SpringBoot...
+
+How maven will download the dependencies?
+Maven will download the dependencies by using a file which is known as 'pom.xml' file
+POM - Project Object Model
+Whatever you want to communicate with maven, you have to communicate using pom.xml file
+MP ----> PA
+
+3. Using maven we can compile the source code of the app.
+All the java files will have an extension called .java
+.java files will consists of human understandable language
+We have to convert the human understandable language into the machine understandable language (Byte - 0's and 1's). 
+
+Compilation: Conversion of human understandable language into the machine understandable language is known as Compilation
+
+When we compile the .java file, then will get converted to .class file
+Once we get the .class file then we can execute the code and then we can see the output
+To see the output we need JAVA software to be installed in the machine. Any machine which have java s/w is called as Java Virtual Machine
+
+	     compile			execute
+.java -----------------> .class -----------------> JVM -----------------> Output
+
+4. When we have multiple .java files, using maven we can package all the .java files. Once after packaging we can directly compile them.
+
+In realtime, using java we can develop two types of applications;
+1. Standalone Applications
+2. Web Applications
+3. Enterprise Applications
+
+Based on the type of application, the packaging will get differ;
+ 
+
+Maven is developed by using Java Programming Language (JPL)
+All java based projects are built by using Maven
+Once you install java s.w in the machine, we have to configure it.
+Maven is owned by Apache organization
+
+Note: If you want to work with maven, java installation is essential.
+
+
+Download & Install Java Software:
+------------------------------------------------
+~ In order to download the Java Software, we need to create an account in Oracle Website.
+~ Weblink: https://www.oracle.com/in/java/technologies/downloads/#jdk21-windows
+
+Configuration of Java Software:
+------------------------------------------------
+~ After installation of Java Software, we have to set JAVA_HOME in environment variables.
+~ The variables which are used by our PC are called environment variables.
+~ Two types of environment variables: 1. User Variables 2. System Variables
+
+~ Once after downloading and installing the java s/w, follow the below steps;
+
+Setting up the JAVA_HOME page for system variables:
+------------------------------------------------------------------------------
+~ C Drive - Program Files - Java - jdk - Copy the jdk folder path - In the search box of PC, type "Environment" and select 'Edit System Environment Varibles' - A dialogue box will open - Advanced - Environment Variables - A dialogue box will open - System Variables - New - A dialogue box will open - Variable Name: JAVA_HOME, Variable Value: <Paste the path of jdk folder> - OK - OK - OK.
+
+Setting up the path for Java:
+------------------------------------------
+~ C Drive - Program Files - Java - jdk - Go inside the bin folder - Copy the bin folder path - In the search box of PC, type Environment and select 'Edit System Environment Varibles' - A dialogue box will open - Advanced - Environment Variables - A dialogue box will open - System Variables - Select the "path" - Edit - New - Paste the path - OK - OK - OK.
+
+How to check whether java is working or not:
+----------------------------------------------------------------
+~ Open Command Prompt ----> java -version ----> You should see the Java Version Number/Id
+
+How to download Maven from Apache Website:
+--------------------------------------------------------------------
+~ Google ----> Download apache maven (https://maven.apache.org/download.cgi) ----> "Binary Zip Archive" and click on the link next to it ----> The file gets downloaded in the Zip format ----> Extract the zip file ----> Copy the folder ----> Paste the folder in the C Drive
+
+------------------------------------------------
+Configuration of Maven Software:
+------------------------------------------------
+Setting up the MAVEN_HOME in system environment variables:
+---------------------------------------------------------------------------------------------
+~ C Drive - Paste the extracted zip folder in C Drive - Apache Maven folder - Copy the folder path - In the search box of PC, type Environment and select 'Edit System Environment Variables - A dialogue box will open - Advanced - Environment Variables - A dialogue box will open - System Variables - New - Variable Name: MAVEN_HOME, Variable Value: <Paste the path of maven folder> - OK - OK - OK.
+
+Setting up the path for Maven:
+------------------------------------------
+~ C Drive - Apache folder - Bin Folder - Copy the bin folder path - In the search box of PC, type Environment and select 'Edit System Environment Varibles' - A dialogue box will open - Advanced- Environment Variables - A dialogue box will open - System Variables - Select the "path" - Edit - New - Paste the path - OK - OK - OK.
+
+How to check whether Maven is working or not:
+----------------------------------------------------------------
+~ Open Command Prompt ----> mvn --version ----> You should see the Maven Version Number/Id
+
+Maven Terminology
+----------------------------
+1. Archetype: It represents what type of project we are going to create. It refers to a project template that you can use to quickly set up new projects.
+It acts as a blueprint containing basic structure and configuration for a specific type of project.
+
+Standalone App	----> maven-archetype-quickstart
+Web App			----> maven-archetype-webapp
+
+2. group ID: It represents the company name or a project name
+Infosys ---> Netflix, Hot Star
+Infosys - Netflix
+
+3. Artifact ID: It represent the project name or project module name
+An artifact refers to any file that can be downloaded, installed or deployed during the build process.
+Netflix ----> Documentaries 
+
+4. Packaging: It represents how you want to package your application
+
+Standalone App ----> .jar
+Web App		----> .war
+
+Creation of Initial Project Folder Structure
+---------------------------------------------------------
+
+============================================
+How to create standalone application using Maven:
+============================================
+mvn archetype:generate -DgroupId=in.<CompanyName> -DartifactId=<ProjectName> -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+mvn archetype:generate -DgroupId=in.Paperlive -DartifactId=Hotstar -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
+
+============================================
+How to create web application using Maven
+============================================
+mvn archetype:generate -DarchetypeArtifactId=maven-archetype-webapp -DgroupId=in.<CompanyName> -DartifactId=<ProjectName> -DinteractiveMode=false
+
+mvn archetype:generate -DarchetypeArtifactId=maven-archetype-webapp -DgroupId=in.Kastro -DartifactId=Netflix -DinteractiveMode=false
+
+
+Once you create the project folder structure, we will see two things inside the folder structure;
+1. SRC Folder
+2. pom.xml
+
+Inside SRC Folder, we will see two sub folders;
+1.1. Main Folder - consists of .java file where developers will write the source code
+1.2. Test Folder - apptest.java file, which consists of testing related information (J-Unit Test)
+
+How to add the dependencies in the pom.xml file;
+
+How maven will download the dependencies from pom.xml file;
+Repositories - it is a folder which consists of all the dependencies
+
+Maven Goals/Maven Lifecycle
+------------------------------------------
+Goals are nothing but commands
+Every maven goal will start with mvn
+
+1. Clean
+It will delete a folder which is known as Target
+Target folder consists of jar/war files
+
+mvn clean
+
+2. Compile
+It will compile the source code of the app (.java ----> .class)
+
+mvn compile
+
+3. Package
+To package the project as a jar or war file
+
+mvn package
+When we execute the mvn package goal, it will create the TARGET folder, inside which we will have the jar or war files based on the type of app.
+
+4. Test
+It will perform the unit test execution of the code
+SonarQube Tool
+
+mvn test
+
+5. Install
+To install the project as a dependency in the local repo
+
+mvn install
+
+Note 1: we can execute multiple goals at the same time
+Ex: mvn clean compile package
+
+Note 2: Whenever we are executing the maven goals, make sure you have opened the command prompt in the path of pom.xml file
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
