@@ -1,0 +1,109 @@
+													GIT_Day 01
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Git Download link
+https://git-scm.com/downloads/win
+
+Installation of GIT in Linux based instances;
+sudo yum install git
+
+Installation of GIT in Ubuntu based instances;
+sudo apt install git
+
+Why to configure?
+To track the activity details of the team members.
+
+Ways to configure?
+System
+Settings applies to all users
+Global
+Settings applies to all repos of current user
+Local
+Settings applies to current repo.
+
+Note: All git commands will start with "git"
+
+Configuring users in git
+1. Username configuration
+git config --global user.name '<UserName>'
+
+To verify the username configuration;
+git config user.name
+
+2. Email configuration
+git config --global user.email '<UserEmailID>'
+
+To verify the user email configuration;
+git config user.email
+
+3. To see the list of configurations
+git config --list
+
+4. Initializing the git
+git init
+
+5. Steps of working with git
+Create an empty folder
+Open Gitbash terminal
+Initialize the git
+Create a file
+Check the status ----> git status
+Add the files to the staging area ----> git add . or git add <FileName>
+Check the status ----> git status
+Commit the files to the local repo area ----> git commit -m "<CommitMessage>" <FileName>
+Check the status ----> git status
+
+6. Git Command Types
+1. Porcelean commands ----> High level commands ----> used most commonly
+2. Plumming commands ----> Low level commands ----> not used most commonly, based on requirement
+
+7. To see the list of all git commands
+git help -a
+
+8. To see the details about a specific command
+git help <CommandName>
+
+9. To remove the credentials 
+git config --global --unset user.name
+git config --global --unset user.email
+
+10. To see the list of usernames and email ids configured
+git config --list --show-origin
+
+11. To change the file name
+git mv <OldFileName> <NewFileName>
+
+12. To see the commit history
+git log
+You will see 40 characters length commit id along with commit message, date and time, author and email
+To come out of the commit history, press q
+
+13. To see the commit history in one line
+git log --oneline
+It will show 7 characters length commit id along with commit message
+
+14. To see the commit history of a specific commit
+git show <CommitID>
+
+15. To see the commit history from the latest
+git log -<GiveNumber>
+
+Ex: git log -2 ----> It will display the latest 2 commits
+
+16. To see the commit history in reverse order
+git log --reverse
+
+17. To see the top commits
+git show HEAD
+
+18. To delete a file
+git rm <FileName>
+
+19. To see the hidden files/folders
+ls -la
+
+20. To delete the .git folder
+rm -rf .git
+Note: It is not recommended to delete the .git folder
+
+
+
