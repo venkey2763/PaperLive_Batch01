@@ -1,0 +1,94 @@
+													GIT_Day 02
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+21. To unstage a staged file
+git rm --cached <FileName>
+
+22. To know the author and email id of a file
+of a specific file ---> git blame <FileName>
+email of a specific file ---> git blame -e <FileName>
+
+23. Can we skip the staging area?
+Yes. but it is not recommended
+
+24. To see the status of a file in a shortform
+git status -s
+If you see ?? in red colour, it means the file is not tracked by the git
+If you see A in green colour, it means the file is tracked by the git
+
+25. How to restore a deleted file?
+1. Create a file, add it and commit it
+2. Write the content inside the created file, add it, and commit it
+3. Delete the file, add it, and commit it
+4. get the logs ---> git log
+5. Use the next latest commit id to recover the deleted file
+	git checkout <NextLatestCommitID> <FileName>
+	add the file and commit the file
+
+26. GITHUB Introduction
+GitHub is a repo area where we store the source code and other application related files
+Each organization will maintain a specific repo for every project
+GitHub repo in Realtime is managed by GitHub admin
+To work with GitHub internet connection is required
+GitHub is a remote repo
+To send the code from local system to the GitHub repo, we will use git bash terminal
+
+27. Create GitHub account
+
+28. Repositories in GitHub
+Repo is a place to store the source code
+
+types of repos.;
+1. Public repo		----> accessible to anyone  
+2. Private repo		----> access is restricted / limited users ---> preferred
+
+29. Creation of repo
+Public repo
+
+Private repo
+
+30. Sending the code (files) to remote repo from local system
+
+git branch -M main
+git remote add origin https://github.com/KastroVKiran/paperlive-Public.git
+git push -u origin main
+
+31. Cloning the repo
+Cloning means getting the updated code from the remote repo to local repo
+To clone a remote repo, we will use repo URL (HTTPS)
+
+Syntax: git clone <Repo.URL>
+
+32. Branches
+
+movies ---> dev1
+Create a branch ---> git branch <BranchName>
+
+To see the list of branches ---> git branch
+
+To switch to a branch ---> git checkout <BranchName>
+Note: Whenever we are switching to a new branch, whatever files that are there in the previous branch all the files will get copied to the new branch also.
+
+To create and switch to the branch at the same time
+git checkout -b <BranchName>
+
+33. git ignore
+
+Note: Files in .gitignore cannot be seen in GitHub repo because we didn't committed them and pushed them
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
