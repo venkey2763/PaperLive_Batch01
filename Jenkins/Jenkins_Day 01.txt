@@ -177,7 +177,7 @@ Installation of Jenkins on EC2 Instance:
 ***********
 Part 1
 ***********
-1. Launch and Connect to the Instance (Amazon Linux, 2023 AMI) using MobaXTerm
+1. Launch and Connect to the Instance (Amazon Linux 2 AMI) using MobaXTerm
 
 2. Become Root User
 sudo su
@@ -191,22 +191,22 @@ https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/
 (Latest commands to install Jenkins in Amazon Linux 2023 instance)
 
 3. Add Jenkins repo. to our YUM repo:
-sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+sudo wget -O /etc/yum.repos.d/jenkins.repo \
+    https://pkg.jenkins.io/redhat-stable/jenkins.repo
 
 4. Import a key-file from Jenkins-CI to enable the installation from package:
-sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
 sudo yum upgrade
 
 ***********
 Part 3
 ***********
 5. Installing Java
-sudo dnf update -y
-sudo dnf install java-17-amazon-corretto -y
+sudo yum install java-17-amazon-corretto-headless
 java -version
 
 6. Install Jenkins:
-sudo dnf install jenkins -y
+sudo yum install jenkins -y
 
 7. Lets start, enable, and check the status of Jenkins
 sudo systemctl enable jenkins
