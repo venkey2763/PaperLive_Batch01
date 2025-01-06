@@ -1,0 +1,279 @@
+												Jenkins_Day 01
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Linux & Shell Scripting (3 days)
+Maven (1 day)
+Git & GitHub (3 days)
+Webserver and Jenkins (5 days)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Developer ---> Code (App) ----> Java/Python/... ---> Take the code from repo ----> Deploy into the server
+
+What are the different ways to deploy the code into the servers?
+1. Manual deployment		-----> 100% human work
+2. Automated deployment	-----> 30% human work, 70% will be the work the done by machine
+
+In order to do the Manual deployment we need webservers
+Webservers: Tomcat, Ngnix, Apache, JBoss
+
+
+Folder structure of tomcat
+-------------------------------------
+Download link: https://tomcat.apache.org/download-90.cgi
+
+Bin - Binaries 
+It consists of binary files which are used to start and stop the tomcat server
+Start ----> Windows: startup.bat, Linux/Ubuntu: startup.sh
+
+Stop ----> Windows: shutdown.bat, Linux/Ubuntu: shutdown.sh
+
+In real-time, we will prefer Linux OS
+
+Conf - Configurations
+context.xml, tomcatcat-users.xml, server.xml
+
+Lib - Libraries
+Standalone applications ---> packaging (jar file) ---> To deploy the jar file of an application we will use LIB folder
+
+Logs - Application logs
+AWS ---> CloudWatch, CloudTrial
+K8S ---> Prometheus and Grafana
+
+Webapps - This folder is the place where we will deploy the war file of an application. This folder is also called as 'deployment' folder.
+We can deploy multiple war files in the same webapps folder, but its not recommended
+
+Note: To work with tomcat, we need java software to be installed in the VM. Java17, Java21
+Note: By default, tomcat webserver will run on port number 8080
+
+----------------------------------------------------
+Manual deployment of an application
+----------------------------------------------------
+
+Working with Tomcat in the Linux EC2 instance
+-----------------------------------------------------------
+~ Launch the Linux based VM
+~ Connect to the Instance
+~ Install Java Software:
+	To install Java 17 on Amazon Linux:
+		sudo dnf update -y
+		sudo dnf install java-17-amazon-corretto -y
+		java -version
+
+
+Installation of Tomcat Web Server in Linux based VM
+----------------------------------------------------------------------------
+~ Since the VM is Linux based OS, we will install the "tar" file of Apache Tomcat Web Server
+		https://tomcat.apache.org/download-90.cgi
+~ Keep the cursor on tar.gz file and right click and select 'Copy link address'
+~ To install the Webserver: wget <Paste the tar.gz link> (Tar file of Apache Tomcat will get installed)
+~ Extract the tar file
+	tar -xvf <Name visibile in the red colour in the above link>
+	ls -l (You can see the extracted file in blue clolor)
+~ cd <Enter the name visibile in blue colour in above line>
+	ls -l (To see the folder structure)
+
+Starting the Tomcat Sever
+------------------------------------------
+~ To start the server, we need to access the startup.sh file. This file is available in BIN Folder
+~ cd bin/
+~ To start the sever, 
+	./startup.sh (You can see "Tomcat Started")
+
+Accessing Tomcat Server
+--------------------------------------
+~ Copy the Public IP of EC2 Instance and paste in new tab ---- You will see the error page. This is because, the port no. 8080 is not enabled.
+
+~ Enable Port No. 8080 in SGs of EC2 Instance.
+	Type: Custom TCP, Port: 8080, Source: Anywhere
+
+~ After enabling the port no 8080, go to new tab,
+		<Paste the public IP of instance>:8080/ -----------You can see tomcat server home page
+
+Deploy the Web Application in Tomcat Server
+---------------------------------------------------------------
+The war file has to be deployed in the WEBAPPS Folder
+
+Goto 02-Maven-WebApp-CivilEdu -----> Open Command Prompt in that path ----> Lets package the project -----> mvn clean package -----> You can see Build Success ----> You can see the war file in target folder
+
+Since we are accessing the Tomcat in our PC, we can only access the HOME PAGE of TOMCAT. We cannot perform the Admin activities from our PC.
+To perform the admin activities from our PC, we need to edit the "context.xml" and configure "tomcat-user.xml" files.
+
+Editing the context.xml to give the Admin permissions
+------------------------------------------------------------------------------
+File path of context.xml:
+	cd tomcat/webapss/manager/META-INF/context.xml
+
+vi context.xml ----> Edit the allow tag -----> ".*" />
+
+Configuring the Users in Tomcat
+---------------------------------------------
+we need to edit the tomcat-users.xml to configure the users. 
+The "tomcat-users.xml" file is available in "conf" folder
+
+<role rolename="manager-gui" />
+<user username="tomcat" password="tomcat" roles="manager-gui" />
+<role rolename="admin-gui" />  
+<user username="admin" password="admin" roles="manager-gui,admin-gui"/>
+
+Click on 'Server Status' in the Tomcat Browser ----> Enter the username (admin) and password (admin)
+
+Deploying the "war" file of our application
+------------------------------------------------------------
+Scroll down to see "War file to deploy" -----> Click on Choose File ----> Select the war file from our PC ----> Click on "Deploy" 
+You can see our application under "List Applications"
+
+Click on the Application Name (02-Maven-WebApp) -----> You will be able to see the HELLO WORLD!
+
+Note: HELLO WORLD! is seen because it is available in "index.jsp" file which is there in "src" folder"
+
+
+This is all about the Manual Deployment.
+
+Developer has made the changes ----> package ---> war ----> Deploy the war manually ----> Manual work
+
+To automate the above process we will use Jenkins.
+
+By using Jenkins we will create CI & CD Pipelines
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+CI ----> Continuous Integration ----> It is a process of Continuous Build and Continuous Test
+	CI = CB + CT
+100 lines --- 200 lines (CT)
+
+CD ----> Continuous Delivery
+Deploying the code manually into the servers is known as Continuous Delivery
+
+CD ---->Continuous Deployment
+Deploying the code automatically into the servers is known as Continuous Deployment
+
+Pipeline is nothing but sequential execution of different tasks to deploy the app
+
+To do the automated deployment of the code we will use JENKINS service
+
+Pre-Jenkins era ----> Continuous Delivery
+Post-Jenkins era ---->Continuous Deployment
+
+---------------------------------
+Introduction to Jenkins
+---------------------------------
+Jenkins is a free and o/s software
+Jenkins was developed by JPL
+Java 8 version
+If you want to work with Jenkins, you must install java inside the VM or you must configure java inside the Jenkins
+Jenkins will work on default port number i.e 8080
+Jenkins is a CI & CD tool
+
+-------------------------------------
+Build and deployment process
+-------------------------------------
+1. Get the code from repo
+2. Create the infrastructure (VMs)
+3. Compile the code
+4. Code quality analysis (optional) - SonarQube
+5. Package the code
+6. Store the artifacts in Artifact repository (Nexus/JFrog) (optional)
+7. Deploy the code 
+
+----------------------------------------------------------
+Installation of Jenkins on EC2 Instance:
+----------------------------------------------------------
+***********
+Part 1
+***********
+1. Launch and Connect to the Instance (Amazon Linux, 2023 AMI) using MobaXTerm
+
+2. Become Root User
+sudo su
+cd (You will see only IP of Instance)
+sudo yum update -y
+
+***********
+Part 2
+***********
+https://www.jenkins.io/doc/tutorials/tutorial-for-installing-jenkins-on-AWS/
+(Latest commands to install Jenkins in Amazon Linux 2023 instance)
+
+3. Add Jenkins repo. to our YUM repo:
+sudo wget -O /etc/yum.repos.d/jenkins.repo https://pkg.jenkins.io/redhat-stable/jenkins.repo
+
+4. Import a key-file from Jenkins-CI to enable the installation from package:
+sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
+sudo yum upgrade
+
+***********
+Part 3
+***********
+5. Installing Java
+sudo dnf update -y
+sudo dnf install java-17-amazon-corretto -y
+java -version
+
+6. Install Jenkins:
+sudo dnf install jenkins -y
+
+7. Lets start, enable, and check the status of Jenkins
+sudo systemctl enable jenkins
+sudo systemctl start jenkins
+sudo systemctl status jenkins
+
+You should see "Active & Running" in Green Colour, which means the Jenkins Service is successfully installed.
+
+Note: To remove jenkins: sudo yum remove jenkins
+
+***********
+Part 4
+***********
+By default, the Jenkins tool will run on Port No. 8080
+Enable Port No. 8080 for the EC2 Instance inorder to access Jenkins Tool.
+Check Instance ----> Security ----> Click on link below the Security Group ----> Add Rule ----> Custom TCP, Port No. 8080 ----> Save Rules.
+Access Jenkins: <public ip>:8080
+
+Get the administration password
+cat <Paste the red code visible while accessing jenkins in browser> and execute in MobaXTerm
+
+Copy the code visible in MobaXTerm and Paste in Notepad
+8f39e64834e34e3ba2e6b0ef55695ea0
+
+Paste the above code in Jenkins Browser under "Administrative Password"
+
+Click on "Install Suggested Plugins"
+
+Create First Admin User
+
+Provide Username, Password, Full Name, and Email
+
+Save and Continue
+
+Copy the Jenkins URL and Paste in Notepad
+http://3.135.249.138:8080/
+
+Save and Finish
+
+Click on "Start Using Jenkins"
+
+Types of jobs in Jenkins
+--------------------------------
+Job is nothing but a task
+In Jenkins we will create Jenkins jobs
+
+1. Freestyle project - which is created by using Jenkins user interface
+2. Pipeline - which is created by using declarative/groovy script 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
