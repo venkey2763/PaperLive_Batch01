@@ -1,5 +1,14 @@
 													Maven
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Topics:
+1. Introduction to Maven
+2. Need for Maven
+3. Maven advanatages
+4. Standalone and web apps creation using maven
+5. Maven goals
+6. Working with Maven
+7. Maven terminology
+
 What is Maven?
 Maven is a build tool that is used to create the initial project folder structure to develop the source code for the applications.
 
