@@ -1,5 +1,8 @@
 												Linux_Day 03
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Topics:
+1. Linux Commands_Part 3
+
 65. File Permissions
 Whenever we execute ls -l or ll command we will see the meta data of a file or a directory. As a part of metadata, we will see something like below;
 rw-r--r--
