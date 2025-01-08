@@ -1,10 +1,22 @@
 												Jenkins_Day 01
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Linux & Shell Scripting (3 days)
-Maven (1 day)
-Git & GitHub (3 days)
-Webserver and Jenkins (5 days)
+Topics/Modules Covered So far;
+1. Linux & Shell Scripting (3 days)
+2. Maven (1 day)
+3. Git & GitHub (3 days)
+
+Today's New Module;
+4. Webserver and Jenkins (5 days)
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Topics:
+1. Introduction to Tomcat
+2. Tomcat folder structure
+3. Setup and Manual deployment using tomcat
+4. Introduction to Jenkins
+5. Jenkins setup
+6. Types of jobs and creation of freestyle project using jenkins
+
+
 Developer ---> Code (App) ----> Java/Python/... ---> Take the code from repo ----> Deploy into the server
 
 What are the different ways to deploy the code into the servers?
