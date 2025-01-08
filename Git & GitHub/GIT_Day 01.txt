@@ -1,5 +1,10 @@
 													GIT_Day 01
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Topics:
+1. Introduction to Git
+2. Git installation and setup
+3. Working with Git commands_Part 1
+
 Git Download link
 https://git-scm.com/downloads/win
 
