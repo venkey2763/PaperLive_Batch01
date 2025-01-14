@@ -42,6 +42,8 @@ Unlock the world of DevOps with a comprehensive and hands-on learning experience
 12. 📊 **Grafana and Prometheus**  
     Monitor and visualize application performance with Grafana and Prometheus.
 
+13. 📊 **Nexus Project**  
+      https://youtu.be/opJAfDOCZuI
 ---
 
 ### ✨ **Add-on**
@@ -56,5 +58,4 @@ Clone this repository and follow along with the course:
 ```bash
 git clone https://github.com/KastroVKiran/PaperLive_Batch01.git
 
-### 📚 **Nexus Project**
-https://youtu.be/opJAfDOCZuI
+
