@@ -55,3 +55,6 @@ Unlock the world of DevOps with a comprehensive and hands-on learning experience
 Clone this repository and follow along with the course:  
 ```bash
 git clone https://github.com/KastroVKiran/PaperLive_Batch01.git
+
+### 📚 **Nexus Project**
+https://youtu.be/opJAfDOCZuI
