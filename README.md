@@ -44,6 +44,9 @@ Unlock the world of DevOps with a comprehensive and hands-on learning experience
 
 13. 📊 **Nexus Project**  
       https://youtu.be/opJAfDOCZuI
+
+14. 📊 **SonarQube Project**  
+      https://youtu.be/ScdedztTaAU
 ---
 
 ### ✨ **Add-on**
