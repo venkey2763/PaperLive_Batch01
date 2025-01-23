@@ -1,0 +1,199 @@
+												Docker_Day 03
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+-----------------------------------------------
+DOCKER FILE COMPONENTS
+-----------------------------------------------
+1. FROM - it is the base image which going to give the OS for our container
+2. RUN - it is used to install any packages, or run commands. RUN component will get executed during the image creation.
+3. CMD - it is used to execute any Linux commands. CMD component will get executed during container creation.
+4. COPY - it is used to copy the local files into the container
+5. ADD - it is used to copy the internet files into the container
+
+To re/start the docker service
+sudo service docker start
+
+To see the list of images
+docker images
+
+To see list of running containers
+docker ps
+
+To see list of all containers
+docker ps -a
+
+To search for a default image
+docker search <ImageName>
+
+To pull/download the docker image
+docker pull <ImageName>
+
+To create and run the container
+docker run -it --name <ContainerName> <ImageName>
+
+To stop a container
+docker stop <ContainerName>
+
+To delete a container
+docker kill <ContainerName>
+
+To restart a container
+docker restart <ContainerName>
+
+To run the image
+docker run <ImageName>
+
+To remove the image
+docker rmi <ImageName>
+
+To remove an image which is being used by the container (stopped/running)
+docker rmi -f <ImageName>
+
+To run the image without pulling
+docker run <ImageName>
+
+To rename a container
+docker rename <CurrentNameOfContainer> <NewName>
+
+To go inside a container
+docker exec -it <ContainerName> /bin/bash
+
+If the container stops immediately after creating, we have to run the container in the interactive mode
+docker run -it <ContainerName>
+
+To comeout of the container
+exit (OR) Control + P +Q (OR) Control +D
+
+To see the contents available inside a container
+If the container is in the stopped state, first start the container ---> docker start <ContainerName>
+After starting the container, we have to go inside the container ---> docker exec -it <ContainerName> /bin/bash
+Do ls to see the list of files/directories
+
+To see the container ids alone
+docker ps -a -q
+
+To stop all the running containers at a time
+docker stop $(docker ps -a -q)
+
+6. WORKDIR - it is used to go inside the required directory
+7. LABEL - it is used to provide the tags such as authorname, author email, app name...
+
+Dockerfile 4
+----------------------
+FROM ubuntu
+RUN apt update -y
+RUN apt install git maven apache2 -y
+COPY index.html /tmp
+ADD https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz /tmp 
+WORKDIR /tmp
+LABEL author kastro
+
+To know the complete details of a specific container
+docker inspect <ContainerName>
+
+To know the author details of a specific container
+docker inspect <ContainerName> | grep -i author
+
+8. ENV - These are the variables which runs inside a container.
+9. ARGS - These are the variables which runs outside a container.
+
+Dockerfile 5
+----------------------
+FROM ubuntu
+RUN apt update -y
+RUN apt install git maven apache2 -y
+COPY index.html /tmp
+ADD https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz /tmp 
+WORKDIR /tmp
+LABEL author Kastro
+ENV name kastrokiran
+ENV client Netflix
+
+Note: Create a new docker file with ARGS component and execute it and check for the variables
+
+10. ENRYPOINT - highly preferred over CMD
+11. VOLUME - it is used to create the volume for a container. Volume is nothing but a folder which contains the data inside a container.
+12. EXPOSE - it is used to give port number to a container
+
+To see the container ids alone
+docker ps -a -q
+
+To stop all the running containers at a time
+docker stop $(docker ps -a -q)
+
+To see the image ids alone
+docker images -q
+
+To remove all the images
+docker rmi -f $(docker images -q)
+
+------------------------------------------
+Dockerizing the Java Application
+------------------------------------------
+We can develop 2 types of applications by JPL;
+1. Normal Java Application - without SpringBoot - Legacy Projects
+2. JA with SpringBoot - with SpringBoot - Commonly Used
+
+Docker file components will get changed based on the type of Java Application
+Normal Java Apps will be packaged as a war file and then that war file will be deployed into the webserver (Tomcat, Nginx, Apache)
+To package any normal java app we will use a build tool which is known as MAVEN
+
+For the projects which are developed by using SpringBoot, we dont have to use Maven
+
+Docker File for Normal Java Application
+***********************************
+Tomcat server is required to dockerize the normal java application
+
+Repo URL: https://github.com/KastroVKiran/maven-app-1.git
+
+FROM tomcat:9.0
+EXPOSE 8080
+COPY target/Kastro-app.war usr/local/tomcat/webapps/
+
+Steps:
+1. sudo yum install git -y
+2. sudo yum install maven -y
+3. Clone the repo
+4. Switch to the directory
+5. Verify the files
+6. Package the code --- mvn clean package
+7. Build the docker image
+8. Run the image and do the port mapping
+docker run -d -p <HostPortNumber>:<ContainerPortNumber> <ImageName>
+
+---------------------------------------------
+Task: Dockerizing the Python App
+Video Resource: https://www.youtube.com/watch?v=KHxfsqO16YU&list=PLs-PsDpuAuTeNx3OgGQ1QrpNBo-XE6VBh&index=15&pp=gAQBiAQB
+---------------------------------------------
+
+-----------------------------------
+DOCKER VOLUMES
+-----------------------------------
+Volume means storage.
+To store the data inside a container, we will use Docker Volumes
+We can share the docker volume from one container to another container
+The volumes consists of the file which have data
+Single volume can be attached to multiple containers But at a time we can attach only one volume to one container
+We can create morethan 1 volume to a single container
+
+Container 1 --- Volume 1 => 10 files
+This volume 1 which have 10 files can be shared to another container known as Container 2
+This concept is called as "DECOUPLE"
+So we can say volumes are loosely attached i.e they are decoupled / separate
+If i delete the container  the volume will not get deleted
+
+Methods of creating docker volumes
+-----------------------------------------------
+Method 1 - Using dockerfile we can create volumes
+
+dockerfile for method 1
+
+FROM ubuntu
+VOLUME ["/volume1"]
+
+hscotnainer01 ----> volume1 ----> 5 python files
+
+Lets share the volume from container 1 to container 2
+
+
+
+

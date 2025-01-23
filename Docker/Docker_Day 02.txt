@@ -1,0 +1,128 @@
+												Docker_Day 02
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+docker -v ----> It will show only the docker version number
+docker version ----> It will show the complete details of the docker
+docker info ----> This command will give the details of containers, images and the docker version
+
+To see the list of docker images ----> docker images
+To see the list of running containers ----> docker ps
+To see the list of all the containers (running/stopped) ----> docker ps -a
+
+To search a specific image ----> docker search <ImageName>
+To pull the image to the docker engine ----> docker pull <ImageName>
+
+The docker container is created by using docker image
+
+To create and run the container ----> docker run -it --name <ContainerName> <ImageName>
+To create and run the container ----> docker run -it --name <ContainerName> <ImageID>
+
+To comeout of the container ----> exit (or) control + P + Q
+
+To stop a running container ----> docker stop <ContainerName>
+To kill a container ----> docker kill <ContainerName>
+To go inside a container ----> docker attach <ContainerName>
+
+To copy the content from container to image ----> commit
+
+The process whatever we have done so far is as below;
+1. Pull the image (ubuntu)
+2. Created a container (container02)
+3. Created files and package inside the container02
+4. Created a custom image by using container02
+5. Using the custom image we have created a container03
+6. Go inside the container03 and verify for the files and packages
+
+This concept is called OS Level Virtualization (taking the complete backup of an OS)
+
+The above process is not a real-time work because it involves manual effort. So to automate this process, we will create a file called "dockerfile" (or) "Dockerfile"
+Inside the dockerfile we will keep all our requirements
+The purpose of docker file is to do the image automation. This is followed in real-time
+
+--------------------------------------------------------------------------
+Creation of custom docker image by using simple docker file
+--------------------------------------------------------------------------
+Docker Image ----> Dockerfile
+To create dockerfile ---> we need to use docker commands
+
+
+How to login to the dockerhub from the instance?
+docker login
+Enter username
+Enter password
+You will see 'login succeeded'
+
+Steps:
+Write Dockerfile
+Create docker image using dockerfile
+Create container using docker image
+
+vi dockerfile ---->
+FROM ubuntu
+RUN echo "This is Docker Session 1"
+RUN echo "Docker classes will be there for 10 hrs"
+CMD echo "Practice Docker"
+CMD echo "New dockerfile"
+RUN echo "Hello World"
+
+
+To create the docker image by using docker file ----> docker build -t <ImageName> .
+To run the docker image ----> docker run <ImageName>
+
+To push the docker image to the docker hub, we need to tag the image
+docker tag <ImageName> <DockerHubUserName>/<ImageName>
+
+To push the docker image
+docker push <DockerHubUuserName>/<ImageName>
+
+-----------------------------------------------
+DOCKER FILE COMPONENTS
+-----------------------------------------------
+1. FROM - it is the base image which going to give the OS for our container
+2. RUN - it is used to install any packages, or run commands. RUN component will get executed during the image creation.
+3. CMD - it is used to execute any Linux commands. CMD component will get executed during container creation.
+
+Dockerfile 1
+----------------------
+FROM ubuntu
+RUN apt update -y
+RUN apt install git maven -y
+
+Dockerfile 2
+----------------------
+FROM ubuntu
+RUN apt update -y
+RUN apt install git maven -y
+CMD apt install default-jre -y
+
+Note: Be default, when we execute the CMD instruction, the container will be in 'exited' state
+If you want to used CMD, we need to use Squarebrackets  double-quotes
+
+4. COPY - it is used to copy the local files into the container
+5. ADD - it is used to copy the internet files into the container
+
+Dockerfile 3
+----------------------
+FROM ubuntu
+RUN apt update -y
+RUN apt install git maven -y
+COPY index.html /tmp
+ADD https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz /tmp
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
